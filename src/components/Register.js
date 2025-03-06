@@ -49,7 +49,7 @@ const Register = () => {
   return (
     <div className="auth-container">
       <div className="auth-box">
-      <h1>Power BI Dashboard</h1>
+      <h1>Economy Productivity of India</h1>
         <h2>Register</h2>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
