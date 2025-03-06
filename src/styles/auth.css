@@ -1,0 +1,108 @@
+/* 🌙 Dark Theme */
+body {
+ background-color: #121212;
+ color: white;
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+}
+
+/* 🔥 Auth Container */
+.auth-container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ box-shadow: 0px 0px 30px rgba(0, 255, 0, 0.3); /* Green Outer Shadow */
+}
+
+/* 📦 Auth Box */
+.auth-box {
+ background: rgba(20, 20, 20, 0.9);
+ padding: 30px;
+ border-radius: 10px;
+ box-shadow: 0px 0px 25px rgba(0, 255, 0, 0.4); /* Green Glow */
+ text-align: center;
+ width: 350px;
+ transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* 🔄 Hover Effect */
+.auth-box:hover {
+ transform: scale(1.05);
+ box-shadow: 0px 0px 35px rgba(0, 255, 0, 0.6);
+}
+
+/* 🌟 Title */
+.auth-box h2 {
+ color: #4CAF50;
+ margin-bottom: 20px;
+}
+
+/* 🎨 Input Fields */
+input, select {
+ width: 90%;
+ padding: 12px;
+ margin: 10px 0;
+ background: black;
+ border: 1px solid #4CAF50;
+ color: white;
+ border-radius: 5px;
+ transition: 0.3s;
+}
+
+input:focus, select:focus {
+ border-color: #00ff00;
+ box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* 🟢 Button Styling */
+button {
+ background: #4CAF50;
+ border: none;
+ padding: 12px 20px;
+ color: white;
+ cursor: pointer;
+ border-radius: 5px;
+ font-size: 16px;
+ transition: 0.3s;
+}
+
+button:hover {
+ background: #388E3C;
+ transform: scale(1);
+ box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.7);
+}
+
+/* 🔄 Smooth Fade-In Animation */
+@keyframes fadeIn {
+ from {
+   opacity: 0;
+   transform: translateY(-10px);
+ }
+ to {
+   opacity: 1;
+   transform: translateY(0);
+ }
+}
+
+.auth-box {
+ animation: fadeIn 0.6s ease-in-out;
+}
+
+/* 🔗 Login/Register Links */
+p a {
+ color: #00BCD4;
+ text-decoration: none;
+ font-weight: bold;
+ transition: 1s;
+}
+
+p a:hover {
+ color: #008C9E;
+ text-decoration: underline;
+}
