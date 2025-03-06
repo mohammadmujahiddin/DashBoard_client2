@@ -26,19 +26,25 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); // Clear previous errors
-
+  
     if (!isValidPassword(formData.password)) {
       setError("Password must be at least 8 characters long and include an uppercase letter, lowercase letter, and a number.");
       return;
     }
-
+  
     try {
-      await registerUser(formData);
-      navigate("/login"); // Redirect to login after registration
+      const response = await registerUser(formData);
+      
+      if (response.success) { 
+        alert("Registration successful! Please login...");
+      } else {
+        setError(response.message || "Registration failed. Please try again.");
+      }
     } catch (err) {
       setError(err.message || "Registration failed. Please try again.");
     }
   };
+  
 
   return (
     <div className="auth-container">
