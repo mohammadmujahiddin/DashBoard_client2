@@ -17,49 +17,56 @@ html, body {
  scroll-behavior: smooth;
 }
 
-/* Navbar */
+/* Fix navbar height */
 .navbar {
- width: 100%;
- height: 4vh;
- background: #222;
- display: flex;
- align-items: center;
- justify-content: space-between;
- color: white;
- position: fixed;
- padding: 5px;
- top: 0;
- left: 0;
- z-index: 1000;
+  width: 100%;
+  height: 6vh; /* Increased height to accommodate both buttons */
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  position: fixed;
+  padding: 5px 20px;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-/* Navigation Buttons */
-.nav-links button {
- background: #27ae60;
- color: white;
- padding: 8px 12px;
- border: none;
- border-radius: 5px;
- font-size: 14px;
- cursor: pointer;
- transition: 0.3s;
+/* Align buttons in navbar */
+.nav-links {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  align-items: center;
 }
 
-.nav-links button:hover {
- background: #219150;
+/* Download Button */
+.download-btn {
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: #0056b3;
 }
 
 /* Logout Button */
 .logout-btn {
- background: red !important;
- margin: 0 20px;
- padding: 8px 12px;
- border: none;
+  background: red !important;
+  padding: 8px 12px;
+  border-radius: 5px;
 }
 
 .logout-btn:hover {
- background: rgb(11, 249, 27) !important;
+  background: rgb(11, 249, 27) !important;
 }
+
 
 /* Dashboard Content */
 .dashboard-content {
@@ -132,4 +139,72 @@ html, body {
    opacity: 1;
    transform: translateY(0);
  }
+}
+
+/* Download Button */
+.download-btn {
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-right: 10px;
+}
+
+.download-btn:hover {
+  background: #0056b3;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: red !important;
+}
+
+.logout-btn:hover {
+  background: rgb(11, 249, 27) !important;
+}
+
+/* Table Section */
+.table-section {
+  width: 90%;
+  background: #111;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+}
+
+.table-container {
+  overflow-x: auto;
+  max-height: 400px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #27ae60;
+  text-align: left;
+}
+
+th {
+  background: #27ae60;
+  color: white;
+}
+
+td {
+  background: #222;
+  color: white;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background: rgba(39, 174, 96, 0.2);
 }

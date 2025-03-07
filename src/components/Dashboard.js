@@ -1,13 +1,42 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Papa from "papaparse"; // CSV Parser Library
 import "./Dashboard.css"; // Import CSS
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [tableData, setTableData] = useState([]);
 
+  // Function to handle logout
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
+
+  // Function to handle dataset download
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/Economy_Productivity_SD_India.csv"; // File must be in 'public' folder
+    link.download = "Economy_Dataset.csv"; // Downloaded file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Function to fetch & parse CSV data
+  useEffect(() => {
+    fetch("/Economy_Productivity_SD_India.csv")
+      .then(response => response.text())
+      .then(csvText => {
+        Papa.parse(csvText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: (result) => {
+            setTableData(result.data); // Store parsed CSV data in state
+          },
+        });
+      });
+  }, []);
 
   return (
     <div className="dashboard-container">
@@ -15,13 +44,13 @@ const Dashboard = () => {
       <nav className="navbar">
         <h2>Dashboard</h2>
         <div className="nav-links">
+          <button onClick={handleDownload} className="download-btn">📥 Download Dataset</button>
           <button onClick={handleLogout} className="logout-btn">Logout</button>
         </div>
       </nav>
 
       {/* Dashboard Content */}
       <div className="dashboard-content">
-        {/* Power BI Dashboard with Green Shadow */}
         <iframe
           title="Power BI Dashboard"
           className="dashboard-frame"
@@ -44,6 +73,33 @@ const Dashboard = () => {
             <li>🏢 <strong>SME employment trends</strong> linked to youth unemployment rates.</li>
           </ul>
         </div>
+
+        {/* Dataset Table Section */}
+        <div className="table-section">
+          <h3>📋 Economic Dataset Preview</h3>
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                  {tableData.length > 0 &&
+                    Object.keys(tableData[0]).map((key) => (
+                      <th key={key}>{key}</th>
+                    ))}
+                </tr>
+              </thead>
+              <tbody>
+                {tableData.slice(0, 1000).map((row, index) => ( // Show first 10 rows
+                  <tr key={index}>
+                    {Object.values(row).map((val, i) => (
+                      <td key={i}>{val}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
   );
